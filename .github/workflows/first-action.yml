@@ -1,8 +1,12 @@
+# (Must) Workflow name
 name: First Wrorkflow
 
+# (Must) Define trigger
 on: workflow_dispatch
 
+# jobs
 jobs: 
+  # First Job
   first-job:
     runs-on: ubuntu-latest
     steps:
@@ -13,5 +17,10 @@ jobs:
             echo "Hello Non-Mimoto"
       - name: print goodbye
         run: echo "Done - bye!"
+  second-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print stuff
+        run: echo "Here is stuff printed."
         
         
