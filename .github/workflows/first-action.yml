@@ -7,7 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: print greeting 
-        run : echo "Hello World"
+        run : |
+            echo "Hello World"
+            echo "Hello Mimoto"
+            echo "Hello Non-Mimoto"
       - name: print goodbye
         run: echo "Done - bye!"
         
