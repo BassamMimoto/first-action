@@ -10,7 +10,7 @@ jobs:
       - name: Print Greeting
         run: |
           echo "Hello There!"
-          echo ${{variables.USER_NAME}}
+          echo ${{agent_ubuntu.variables.USER_NAME}}
         
   test2:
     runs-on: ubuntu-latest
