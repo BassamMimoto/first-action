@@ -22,7 +22,7 @@ jobs:
             flatbuffers
             pycryptotools
 
-      - name: Install tree tool
-        run: |
-          apt update -y
-          atp install tree
+      #- name: Install tree tool
+      #  run: |
+      #    apt update -y
+      #    atp install tree
