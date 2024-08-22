@@ -8,7 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print Greeting
-        run: echo "Hello There!"
+        run: |
+          echo "Hello There!"
+          echo ${{variables.USER_NAME}}
         
   test2:
     runs-on: ubuntu-latest
