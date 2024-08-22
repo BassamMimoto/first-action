@@ -17,10 +17,12 @@ jobs:
         uses: actions/checkout@v3
       - name: install FlatBuffer Compiler
         uses: nsightsengineering/pip-action@v2
-          with:
-            packages: |
-              flatbuffers
-    - name: Install tree tool
-      run: |
-        apt update -y
-        atp install tree
+        with:
+          packages: |
+            flatbuffers
+            pycryptotools
+
+      - name: Install tree tool
+        run: |
+          apt update -y
+          atp install tree
