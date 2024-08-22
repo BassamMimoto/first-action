@@ -1,7 +1,7 @@
 
 name: Second Workflow
 on: push
-
+  
 jobs:
 
   test1:
@@ -10,7 +10,7 @@ jobs:
       - name: Print Greeting
         run: |
           echo "Hello There!"
-          echo ${{agent_ubuntu.variables.USER_NAME}}
+          echo ${{vars.agent_ubuntu.variables.USER_NAME}}
         
   test2:
     runs-on: ubuntu-latest
