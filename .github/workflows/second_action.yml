@@ -1,0 +1,26 @@
+
+name: Second Workflow
+on: push
+
+jobs:
+
+  test1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Greeting
+        run: echo "Hello There!"
+        
+  test2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: install FlatBuffer Compiler
+        uses: nsightsengineering/pip-action@v2
+          with:
+            packages: |
+              flatbuffers
+    - name: Install tree tool
+      run: |
+        apt update -y
+        atp install tree
