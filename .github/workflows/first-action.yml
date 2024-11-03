@@ -17,10 +17,48 @@ jobs:
             echo "Hello Non-Mimoto"
       - name: print goodbye
         run: echo "Done - bye!"
+
+      - name: Checkout Code
+        uses: actions/checkout@v4 # Checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
+        with:
+          clean: true         # Execute `git clean -ffdx && git reset --hard HEAD` before fetching.
+          fetch-depth: 1      # Number of commits to fetch.
+          show-progress: true # Show progress status output when fetching.
+          submodules: true    # Ensure submodules are checked out and updated.
+          token: ${{ secrets.GITHUB_TOKEN }}  # GitHub-provided token for authentication (temporary).
+
+      - name: Cache the Repository
+        id: cache-repo
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ github.workspace }}
+          key: ${{ runner.os }}-repo-${{ github.sha }}
+
+      - name: Debug Cache Output
+        run: |
+          echo "Cache hit status: ${{ steps.cache-repo.outputs.cache-hit }}"
+
   second-job:
     runs-on: ubuntu-latest
     steps:
       - name: print stuff
         run: echo "Here is stuff printed."
-        
+
+      - name: Restore the Repository Cache
+        id: restore-cache-repo
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ github.workspace }}
+          key: ${{ runner.os }}-repo-${{ github.sha }}
+
+      - name: Verify Cache Status
+        run: |
+          if [ "${{ steps.restore-repo.outputs.cache-hit }}" != "true" ]; then
+            echo "Cache miss! Repo was not restored."
+          else
+            echo "Cache hit! Repo was restored successfully."
+          fi
+
+      - name: Show Current Directory Path and Content
+        run: pwd; ls -ah
         
