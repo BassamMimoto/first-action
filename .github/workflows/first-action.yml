@@ -41,7 +41,7 @@ jobs:
 
       # Step 2: Upload the artifact
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: sample-artifact
           path: sample_artifact.txt
@@ -81,11 +81,11 @@ jobs:
     steps:
       # Step 1: Checkout the repository
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Step 2: Download the artifact
       - name: Download Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: sample-artifact
           path: ./downloaded_artifacts
