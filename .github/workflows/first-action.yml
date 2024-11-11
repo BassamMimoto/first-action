@@ -23,6 +23,11 @@ jobs:
           submodules: true    # Ensure submodules are checked out and updated.
           token: ${{ secrets.GITHUB_TOKEN }}  # GitHub-provided token for authentication (temporary).
 
+      - name: Sleep for 10 seconds
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '10s'
+        
       - name: Cache the Repository
         id: cache-repo
         uses: actions/cache/save@v4
